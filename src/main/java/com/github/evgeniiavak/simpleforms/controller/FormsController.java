@@ -1,6 +1,6 @@
 package com.github.evgeniiavak.simpleforms.controller;
 
-import com.github.evgeniiavak.simpleforms.model.MoodQuestionsForm;
+import com.github.evgeniiavak.simpleforms.model.Mood;
 import com.github.evgeniiavak.simpleforms.service.MoodQuestionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,13 +17,13 @@ public class FormsController {
     }
 
     @PostMapping("mood")
-    public MoodQuestionsForm postMoodForm(@RequestBody MoodQuestionsForm moodQuestionsForm) {
-        moodQuestionsService.save(moodQuestionsForm);
-        return moodQuestionsForm;
+    public Mood postMoodForm(@RequestBody Mood mood) {
+        moodQuestionsService.save(mood);
+        return mood;
     }
 
     @GetMapping("mood/{id}")
-    public MoodQuestionsForm postMoodForm(@PathVariable UUID id) {
+    public Mood postMoodForm(@PathVariable UUID id) {
         return moodQuestionsService.get(id);
     }
 }

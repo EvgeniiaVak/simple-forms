@@ -9,13 +9,17 @@ import java.time.ZonedDateTime;
 import java.util.UUID;
 
 @Entity
-public class MoodQuestionsForm {
+public class Mood {
 
     @Id
     @GeneratedValue
     private UUID uuid;
 
     private int mood;
+
+    private int focus;
+
+    private int anxiety;
 
     @GeneratedValue
     @CreationTimestamp
@@ -37,11 +41,27 @@ public class MoodQuestionsForm {
         this.mood = mood;
     }
 
+    public int getFocus() {
+        return focus;
+    }
+
+    public void setFocus(int focus) {
+        this.focus = focus;
+    }
+
     public ZonedDateTime getTime() {
         return time;
     }
 
     public void setTime(ZonedDateTime time) {
         this.time = time;
+    }
+
+    public int getAnxiety() {
+        return anxiety;
+    }
+
+    public void setAnxiety(int anxiety) {
+        this.anxiety = anxiety;
     }
 }
