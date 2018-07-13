@@ -3,10 +3,10 @@ package com.github.evgeniiavak.simpleforms.model;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.Duration;
 import java.time.ZonedDateTime;
+import java.util.Collection;
 import java.util.UUID;
 
 @Data
@@ -21,6 +21,15 @@ public class Mood {
     @CreationTimestamp
     private ZonedDateTime time;
 
-    private int mood, focus, anxiety;
+    private Integer mood, focus, anxiety, irritability;
+
+    private Duration sleep, sport;
+
+    private Integer coffee;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "mood_uuid")
+    private Collection<Medicine> medicine;
+
+    private String comment;
 
 }

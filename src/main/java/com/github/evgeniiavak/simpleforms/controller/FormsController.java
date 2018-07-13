@@ -22,8 +22,8 @@ public class FormsController {
         return mood;
     }
 
-    @GetMapping("mood/{id}")
-    public Mood postMoodForm(@PathVariable UUID id) {
-        return moodQuestionsService.get(id);
+    @GetMapping("mood/{uuid}")
+    public Mood postMoodForm(@PathVariable UUID uuid) {
+        return moodQuestionsService.get(uuid);
     }
 }
