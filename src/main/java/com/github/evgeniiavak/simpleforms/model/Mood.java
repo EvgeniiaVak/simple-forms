@@ -21,7 +21,7 @@ public class Mood {
     @CreationTimestamp
     private ZonedDateTime time;
 
-    private Integer mood, focus, anxiety, irritability;
+    private Integer joy, focus, anxiety, irritability;
 
     private Duration sleep, sport;
 

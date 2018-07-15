@@ -1,0 +1,12 @@
+{
+  "joy": 6,
+  "focus": 7,
+  "anxiety": 1,
+  "medicine": [
+    {
+      "type": "beer",
+      "unit": "liter",
+      "amount": 2
+    }
+  ]
+}

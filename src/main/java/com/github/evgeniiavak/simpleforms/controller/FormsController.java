@@ -19,9 +19,13 @@ public class FormsController {
         this.moodQuestionsService = moodQuestionsService;
     }
 
+    public FormsController() {
+
+    }
+
     @PostMapping("mood")
     public ResponseEntity<Mood> post(@RequestBody Mood mood) {
-        moodQuestionsService.save(mood);
+        mood = moodQuestionsService.save(mood);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
                 .path("/")
                 .path(mood.getUuid().toString())

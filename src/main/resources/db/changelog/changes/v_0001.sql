@@ -1,11 +1,11 @@
-drop table if exists forms.public.mood cascade;
-drop table if exists forms.public.medicine cascade;
+drop table if exists mood cascade;
+drop table if exists medicine cascade;
 
 create table mood (
   uuid uuid primary key,
   time timestamp,
 
-  mood integer default 5,
+  joy integer default 5,
   focus integer default 5,
   anxiety integer default 0,
   irritability integer default 0,

@@ -18,9 +18,8 @@ public class MoodQuestionsService {
         this.moodQuestionsRepository = moodQuestionsRepository;
     }
 
-    public boolean save(Mood mood) {
-        moodQuestionsRepository.save(mood);
-        return true;
+    public Mood save(Mood mood) {
+        return moodQuestionsRepository.save(mood);
     }
 
     public Mood get(UUID id) {
