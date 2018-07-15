@@ -27,7 +27,8 @@ public class Mood {
 
     private Integer coffee;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "mood_uuid")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "mood_uuid")
     private Collection<Medicine> medicine;
 
     private String comment;

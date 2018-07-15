@@ -3,8 +3,11 @@ package com.github.evgeniiavak.simpleforms.controller;
 import com.github.evgeniiavak.simpleforms.model.Mood;
 import com.github.evgeniiavak.simpleforms.service.MoodQuestionsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.UUID;
 
 @RestController("/forms")
@@ -17,13 +20,24 @@ public class FormsController {
     }
 
     @PostMapping("mood")
-    public Mood postMoodForm(@RequestBody Mood mood) {
+    public ResponseEntity<Mood> post(@RequestBody Mood mood) {
         moodQuestionsService.save(mood);
-        return mood;
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
+                .path("/")
+                .path(mood.getUuid().toString())
+                .build().toUri();
+        return ResponseEntity.created(uri).body(mood);
     }
 
     @GetMapping("mood/{uuid}")
-    public Mood postMoodForm(@PathVariable UUID uuid) {
-        return moodQuestionsService.get(uuid);
+    public ResponseEntity<Mood> get(@PathVariable UUID uuid) {
+        Mood mood = moodQuestionsService.get(uuid);
+        return ResponseEntity.ok(mood);
+    }
+
+    @DeleteMapping("mood/{uuid}")
+    public ResponseEntity<Mood> delete(@PathVariable UUID uuid) {
+        Mood mood = moodQuestionsService.delete(uuid);
+        return ResponseEntity.ok(mood);
     }
 }
