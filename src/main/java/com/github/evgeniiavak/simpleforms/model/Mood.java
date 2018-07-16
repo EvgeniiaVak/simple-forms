@@ -2,6 +2,7 @@ package com.github.evgeniiavak.simpleforms.model;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.hateoas.Identifiable;
 
 import javax.persistence.*;
 import java.time.Duration;
@@ -11,11 +12,11 @@ import java.util.UUID;
 
 @Data
 @Entity
-public class Mood {
+public class Mood implements Identifiable<UUID> {
 
     @Id
     @GeneratedValue
-    private UUID uuid;
+    private UUID id;
 
     @GeneratedValue
     @CreationTimestamp
@@ -28,7 +29,7 @@ public class Mood {
     private Integer coffee;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "mood_uuid")
+    @JoinColumn(name = "mood_id")
     private Collection<Medicine> medicine;
 
     private String comment;

@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SimpleFormsApplication {
+public class MoodRegisterApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SimpleFormsApplication.class, args);
+        SpringApplication.run(MoodRegisterApplication.class, args);
     }
 }
