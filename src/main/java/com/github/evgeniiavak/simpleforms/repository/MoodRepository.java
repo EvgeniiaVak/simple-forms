@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface MoodQuestionsRepository extends CrudRepository<Mood, UUID> {
+public interface MoodRepository extends CrudRepository<Mood, UUID> {
 }

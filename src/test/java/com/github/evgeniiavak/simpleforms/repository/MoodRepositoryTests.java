@@ -20,7 +20,7 @@ import static junit.framework.TestCase.*;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class MoodQuestionsRepositoryTests {
+public class MoodRepositoryTests {
 
     private static final String SQL_INSERT =
             "INSERT INTO " +
@@ -28,7 +28,7 @@ public class MoodQuestionsRepositoryTests {
                     "VALUES (?, now(), 6, 6, 0, 2, 8, 30, 2, 'test comment');";
 
     @Autowired
-    private MoodQuestionsRepository moodQuestionsRepository;
+    private MoodRepository moodRepository;
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -43,9 +43,9 @@ public class MoodQuestionsRepositoryTests {
 
     @Test
     public void testSave()  {
-        Mood savedMood = moodQuestionsRepository.save(mood);
+        Mood savedMood = moodRepository.save(mood);
 
-        assertNotNull(savedMood.getUuid());
+        assertNotNull(savedMood.getId());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class MoodQuestionsRepositoryTests {
 
         jdbcTemplate.update(SQL_INSERT, uuid);
 
-        Mood foundMood = moodQuestionsRepository.findById(uuid).orElseThrow(NotFoundException::new);
+        Mood foundMood = moodRepository.findById(uuid).orElseThrow(NotFoundException::new);
 
         assertNotNull(foundMood);
     }
@@ -62,11 +62,11 @@ public class MoodQuestionsRepositoryTests {
     @Test
     public void testDelete() {
         UUID uuid = UUID.randomUUID();
-        mood.setUuid(uuid);
+        mood.setId(uuid);
         int inserted = jdbcTemplate.update(SQL_INSERT, uuid);
 
-        moodQuestionsRepository.delete(mood);
-        Mood found = moodQuestionsRepository.findById(uuid).orElse(null);
+        moodRepository.delete(mood);
+        Mood found = moodRepository.findById(uuid).orElse(null);
 
         assertEquals(1, inserted);
         assertNull(found);

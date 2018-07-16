@@ -11,9 +11,9 @@ public class Medicine {
 
     @Id
     @GeneratedValue
-    private UUID uuid;
+    private UUID id;
 
-    private UUID mood_uuid;
+    private UUID mood_id;
 
     private String type, unit;
     private Integer amount;

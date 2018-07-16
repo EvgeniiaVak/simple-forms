@@ -1,6 +1,6 @@
 package com.github.evgeniiavak.simpleforms;
 
-import com.github.evgeniiavak.simpleforms.controller.FormsController;
+import com.github.evgeniiavak.simpleforms.controller.MoodController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +11,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SimpleFormsApplicationTests {
+public class MoodRegisterApplicationTests {
 
     @Autowired
-    private FormsController controller;
+    private MoodController controller;
 
     @Test
     public void contextLoads() {
