@@ -24,7 +24,7 @@ public class MoodRepositoryTests {
 
     private static final String SQL_INSERT =
             "INSERT INTO " +
-                    "mood(uuid, time, joy, focus, anxiety, irritability, sleep, sport, coffee, comment) " +
+                    "mood(id, time, joy, focus, anxiety, irritability, sleep, sport, coffee, comment) " +
                     "VALUES (?, now(), 6, 6, 0, 2, 8, 30, 2, 'test comment');";
 
     @Autowired
