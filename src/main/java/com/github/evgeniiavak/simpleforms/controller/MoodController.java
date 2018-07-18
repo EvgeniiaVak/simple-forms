@@ -14,7 +14,7 @@ import java.util.UUID;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 @RestController
-@RequestMapping("/mood")
+@RequestMapping("/moods")
 public class MoodController {
     private MoodService moodService;
 
@@ -35,6 +35,15 @@ public class MoodController {
         return ResponseEntity.
                 status(HttpStatus.CREATED).
                 body(new Resource<>(mood, self));
+    }
+
+    @PatchMapping
+    public ResponseEntity<Resource<Mood>> patch(@RequestBody Mood mood) {
+        mood = moodService.save(mood);
+
+        Link self = linkTo(MoodController.class).slash(mood).withSelfRel();
+
+        return ResponseEntity.ok(new Resource<>(mood, self));
     }
 
     @GetMapping("{uuid}")
